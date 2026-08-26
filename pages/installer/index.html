@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tokai Studio 설치파일 다운로드 및 설치 안내 페이지" />
+  <title>Tokai Studio 다운로드</title>
+
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --surface: #ffffff;
+      --text: #18212f;
+      --muted: #667085;
+      --line: #e4e9f0;
+      --primary: #2f6fed;
+      --primary-hover: #255ecb;
+      --primary-soft: #edf4ff;
+      --warning-bg: #fff9eb;
+      --warning-border: #f2d493;
+      --warning-text: #725100;
+      --shadow: 0 16px 40px rgba(30, 55, 90, 0.08);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family:
+        Pretendard,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, #eaf2ff 0, rgba(234, 242, 255, 0) 360px),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 64px 0 40px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 44px 28px 36px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+    }
+
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 6px var(--primary-soft);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 7vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      font-weight: 800;
+    }
+
+    .hero-description {
+      max-width: 620px;
+      margin: 20px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+      word-break: keep-all;
+    }
+
+    .download-wrap { margin-top: 32px; }
+
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 58px;
+      padding: 0 28px;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(47, 111, 237, 0.22);
+      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .download-button:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(47, 111, 237, 0.28);
+    }
+
+    .download-button:active { transform: translateY(0); }
+
+    .download-icon {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .system-info {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(228, 233, 240, 0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .content { margin-top: 18px; }
+
+    .section { padding: 34px 36px; }
+
+    .section + .section { border-top: 1px solid var(--line); }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.025em;
+    }
+
+    .notice {
+      margin-bottom: 24px;
+      padding: 18px 20px;
+      border: 1px solid var(--warning-border);
+      border-radius: var(--radius-md);
+      background: var(--warning-bg);
+      color: var(--warning-text);
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .notice p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 15px 16px;
+      border-radius: var(--radius-sm);
+      background: #f9fbfd;
+    }
+
+    .step.visual-step {
+      padding-bottom: 18px;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-top: 1px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .step-content p {
+      margin: 2px 0 0;
+      color: #344054;
+      word-break: keep-all;
+    }
+
+    .step-content strong { color: var(--text); }
+
+    .guide-image-wrap {
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .guide-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .guide-image.context-menu {
+      max-width: 720px;
+    }
+
+    .guide-image.properties {
+      max-width: 420px;
+    }
+
+    .guide-caption {
+      margin: 10px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .update-box {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background: var(--primary-soft);
+    }
+
+    .update-box p {
+      margin: 0;
+      color: #324967;
+      word-break: keep-all;
+    }
+
+    .update-box p + p { margin-top: 8px; }
+
+    .support-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .support-list li {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #475467;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 30px 0 10px;
+      text-align: center;
+      color: #98a2b3;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 20px, 920px);
+        padding-top: 32px;
+      }
+
+      .hero { padding: 30px 18px 28px; }
+
+      .hero-description { font-size: 15px; }
+
+      .download-button {
+        width: 100%;
+        min-height: 56px;
+      }
+
+      .section { padding: 26px 20px; }
+
+      .step {
+        grid-template-columns: 34px 1fr;
+        padding: 14px 12px;
+      }
+
+      .guide-image-wrap {
+        margin-left: -2px;
+        margin-right: -2px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        TOKAI
+      </div>
+
+      <h1>Tokai Studio</h1>
+
+      <p class="hero-description">
+        안경원 상담을 위한 시야 체험 및 렌즈 상담 프로그램입니다.
+        아래 버튼을 눌러 Windows용 설치파일을 다운로드할 수 있습니다.
+      </p>
+
+      <div class="download-wrap">
+        <a
+          class="download-button"
+          href="https://github.com/stackop/tokaistudio-release/releases/latest/download/Tokai.Studio_Installer.exe"
+          aria-label="Tokai Studio 설치파일 다운로드"
+        >
+          <svg class="download-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M5 19h14"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Tokai Studio 설치파일 다운로드
+        </a>
+      </div>
+
+      <div class="system-info">
+        Windows 10 / 11 · 64-bit
+      </div>
+    </section>
+
+    <div class="card content">
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-number">1</span>
+          <h2>설치 방법</h2>
+        </div>
+
+        <div class="notice">
+          <strong>설치 전 확인해주세요</strong>
+          <p>
+            다운로드한 설치파일의 속성에서 <b>차단 해제</b> 항목이 표시되는 경우,
+            체크한 뒤 설치를 진행해주세요. 차단 해제 항목이 없다면 바로 설치해도 됩니다.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-badge">1</span>
+            <div class="step-content">
+              <p>
+                위의 <strong>Tokai Studio 설치파일 다운로드</strong> 버튼을 눌러 설치파일을 다운로드합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="step visual-step">
+            <span class="step-badge">2</span>
+            <div class="step-content">
+              <p>
+                다운로드한 설치파일을 <strong>우클릭</strong>하고 <strong>속성</strong>을 선택합니다.
+              </p>
+
+              <div class="guide-image-wrap">
+                <img
+                  class="guide-image context-menu"
+                  src="assets/install-context-menu.png"
+                  alt="Tokai Studio 설치파일을 우클릭한 뒤 속성 메뉴를 선택하는 화면"
+                />
+                <p class="guide-caption">우클릭 메뉴 하단의 <strong>속성</strong>을 선택합니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step visual-step">
+            <span class="step-badge">3</span>
+            <div class="step-content">
+              <p>
+                속성 창 하단의 <strong>보안</strong> 항목에서
+                <strong>차단 해제</strong>를 체크한 후 <strong>확인</strong>을 누릅니다.
+              </p>
+
+              <div class="guide-image-wrap">
+                <img
+                  class="guide-image properties"
+                  src="assets/install-properties.png"
+                  alt="Tokai Studio 설치파일 속성 창에서 차단 해제를 체크하고 확인을 누르는 화면"
+                />
+                <p class="guide-caption">
+                  <strong>차단 해제</strong>를 체크한 뒤 <strong>확인</strong>을 누릅니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-badge">4</span>
+            <div class="step-content">
+              <p>
+                설치파일을 실행하여 <strong>Tokai Studio</strong>를 설치합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-badge">5</span>
+            <div class="step-content">
+              <p>
+                설치가 완료되면 <strong>Tokai Studio</strong>를 실행합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-badge">6</span>
+            <div class="step-content">
+              <p>
+                <strong>필수 업데이트</strong>가 있는 경우 프로그램 실행 과정에서 자동으로 업데이트가 진행됩니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-number">2</span>
+          <h2>업데이트 안내</h2>
+        </div>
+
+        <div class="update-box">
+          <p><strong>필수 업데이트</strong>가 있는 경우 자동으로 업데이트가 진행됩니다.</p>
+          <p>
+            그 외 업데이트는 Tokai Studio의 <strong>설정 → 업데이트</strong>에서
+            직접 확인하고 진행할 수 있습니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-number">3</span>
+          <h2>지원 환경</h2>
+        </div>
+
+        <ul class="support-list">
+          <li>Windows 10</li>
+          <li>Windows 11</li>
+          <li>64-bit</li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      © stackop. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
