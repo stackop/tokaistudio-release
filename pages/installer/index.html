@@ -129,36 +129,91 @@
       flex: 0 0 auto;
     }
 
-    .download-help {
-      margin-top: 14px;
-    }
-
-    .download-help-prompt {
-      margin: 0;
+    .download-hint {
+      margin: 14px 0 0;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.5;
+      word-break: keep-all;
     }
 
-    .download-help-open {
-      display: inline;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      background: none;
+    .download-hint a {
       color: #475467;
-      font: inherit;
       font-weight: 600;
       text-decoration: underline;
       text-decoration-color: rgba(71, 84, 103, 0.35);
       text-underline-offset: 3px;
-      cursor: pointer;
       transition: color 0.18s ease, text-decoration-color 0.18s ease;
     }
 
-    .download-help-open:hover {
+    .download-hint a:hover {
       color: var(--primary);
       text-decoration-color: rgba(47, 111, 237, 0.45);
+    }
+
+    .section-lead {
+      margin: -8px 0 20px;
+      color: var(--muted);
+      font-size: 15px;
+      word-break: keep-all;
+    }
+
+    .help-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .help-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      margin: 0;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #f9fbfd;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .help-item:hover {
+      border-color: #c9d8f5;
+      background: var(--primary-soft);
+      box-shadow: 0 8px 20px rgba(47, 111, 237, 0.08);
+    }
+
+    .help-item-copy {
+      min-width: 0;
+    }
+
+    .help-item-title {
+      display: block;
+      margin: 0;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .help-item-desc {
+      display: block;
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .help-item-arrow {
+      flex: 0 0 auto;
+      color: var(--primary);
+      font-size: 20px;
+      line-height: 1;
     }
 
     .download-help-modal {
@@ -259,7 +314,8 @@
       margin-top: 0;
     }
 
-    .guide-image.download-blocked {
+    .guide-image.download-blocked,
+    .guide-image.smart-app-control {
       width: 100%;
       max-width: 100%;
       height: auto;
@@ -461,6 +517,11 @@
         min-height: 56px;
       }
 
+      .help-item {
+        align-items: flex-start;
+        padding: 16px 14px;
+      }
+
       .section { padding: 26px 20px; }
 
       .step {
@@ -517,20 +578,10 @@
           Tokai Studio 설치파일 다운로드
         </a>
 
-        <div class="download-help">
-          <p class="download-help-prompt">
-            다운로드가 차단되었다면
-            <button
-              type="button"
-              class="download-help-open"
-              id="download-help-open"
-              aria-haspopup="dialog"
-              aria-controls="download-help-modal"
-            >
-              다운로드 문제 해결
-            </button>
-          </p>
-        </div>
+        <p class="download-hint">
+          문제가 생기면 아래
+          <a href="#troubleshooting">문제 해결</a>을 확인해 주세요.
+        </p>
       </div>
 
       <div class="system-info">
@@ -631,9 +682,50 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="troubleshooting">
         <div class="section-heading">
           <span class="section-number">2</span>
+          <h2>문제 해결</h2>
+        </div>
+
+        <p class="section-lead">
+          다운로드나 설치 중 문제가 생겼다면 해당하는 안내를 확인해 주세요.
+        </p>
+
+        <div class="help-list">
+          <button
+            type="button"
+            class="help-item"
+            id="download-help-open"
+            aria-haspopup="dialog"
+            aria-controls="download-help-modal"
+          >
+            <span class="help-item-copy">
+              <span class="help-item-title">다운로드 문제 해결</span>
+              <span class="help-item-desc">브라우저에서 다운로드가 차단될 때</span>
+            </span>
+            <span class="help-item-arrow" aria-hidden="true">→</span>
+          </button>
+
+          <button
+            type="button"
+            class="help-item"
+            id="install-help-open"
+            aria-haspopup="dialog"
+            aria-controls="install-help-modal"
+          >
+            <span class="help-item-copy">
+              <span class="help-item-title">스마트 앱 컨트롤 문제 해결</span>
+              <span class="help-item-desc">Windows 11에서 설치·실행이 차단될 때</span>
+            </span>
+            <span class="help-item-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-number">3</span>
           <h2>업데이트 안내</h2>
         </div>
 
@@ -648,7 +740,7 @@
 
       <section class="section">
         <div class="section-heading">
-          <span class="section-number">3</span>
+          <span class="section-number">4</span>
           <h2>지원 환경</h2>
         </div>
 
@@ -705,51 +797,136 @@
     </div>
   </div>
 
+  <div
+    class="download-help-modal"
+    id="install-help-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="install-help-title"
+    hidden
+  >
+    <button
+      type="button"
+      class="download-help-backdrop"
+      id="install-help-backdrop"
+      aria-label="안내 닫기"
+    ></button>
+    <div class="download-help-dialog">
+      <div class="download-help-dialog-header">
+        <h2 id="install-help-title">스마트 앱 컨트롤 문제 해결</h2>
+        <button
+          type="button"
+          class="download-help-close"
+          id="install-help-close"
+          aria-label="닫기"
+        >
+          ×
+        </button>
+      </div>
+      <p>
+        Windows 11의 스마트 앱 컨트롤(Smart App Control) 때문에
+        설치 또는 실행이 차단될 수 있습니다.
+        아래 안내에 따라 일시적으로 해제한 뒤 다시 설치해 주세요.
+        (코드 서명 적용 전 임시 안내입니다.)
+      </p>
+      <div class="guide-image-wrap">
+        <img
+          class="guide-image smart-app-control"
+          src="assets/smart-app-control-guide.jpg"
+          alt="Windows 11 Smart App Control을 임시로 끄고 설치를 진행하는 방법 안내"
+        />
+      </div>
+    </div>
+  </div>
+
   <script>
     (function () {
-      var openBtn = document.getElementById("download-help-open");
-      var modal = document.getElementById("download-help-modal");
-      var closeBtn = document.getElementById("download-help-close");
-      var backdrop = document.getElementById("download-help-backdrop");
-      if (!openBtn || !modal || !closeBtn || !backdrop) return;
+      var modals = [
+        {
+          openBtns: [document.getElementById("download-help-open")],
+          modal: document.getElementById("download-help-modal"),
+          closeBtn: document.getElementById("download-help-close"),
+          backdrop: document.getElementById("download-help-backdrop")
+        },
+        {
+          openBtns: [document.getElementById("install-help-open")],
+          modal: document.getElementById("install-help-modal"),
+          closeBtn: document.getElementById("install-help-close"),
+          backdrop: document.getElementById("install-help-backdrop")
+        }
+      ];
 
+      var activeEntry = null;
+      var returnFocus = null;
       var isClosing = false;
 
-      function openModal() {
+      function openModal(entry, trigger) {
+        if (!entry || !entry.modal) return;
+
+        if (activeEntry && activeEntry !== entry) {
+          closeModal(true);
+        }
+
         isClosing = false;
-        modal.hidden = false;
-        void modal.offsetWidth;
-        modal.classList.add("is-open");
+        activeEntry = entry;
+        returnFocus = trigger || entry.openBtns[0] || null;
+        entry.modal.hidden = false;
+        void entry.modal.offsetWidth;
+        entry.modal.classList.add("is-open");
         document.body.classList.add("modal-open");
-        closeBtn.focus();
+        entry.closeBtn.focus();
       }
 
-      function closeModal() {
-        if (!modal.classList.contains("is-open")) return;
+      function closeModal(immediate) {
+        if (!activeEntry || !activeEntry.modal.classList.contains("is-open")) return;
 
+        var entry = activeEntry;
         isClosing = true;
-        modal.classList.remove("is-open");
+        entry.modal.classList.remove("is-open");
         document.body.classList.remove("modal-open");
-        openBtn.focus();
+
+        if (returnFocus) returnFocus.focus();
 
         function finishClose(event) {
-          if (event && event.target !== modal) return;
-          modal.removeEventListener("transitionend", finishClose);
+          if (event && event.target !== entry.modal) return;
+          entry.modal.removeEventListener("transitionend", finishClose);
           if (!isClosing) return;
-          modal.hidden = true;
+          entry.modal.hidden = true;
+          if (activeEntry === entry) activeEntry = null;
           isClosing = false;
         }
 
-        modal.addEventListener("transitionend", finishClose);
+        if (immediate) {
+          entry.modal.hidden = true;
+          if (activeEntry === entry) activeEntry = null;
+          isClosing = false;
+          return;
+        }
+
+        entry.modal.addEventListener("transitionend", finishClose);
       }
 
-      openBtn.addEventListener("click", openModal);
-      closeBtn.addEventListener("click", closeModal);
-      backdrop.addEventListener("click", closeModal);
+      modals.forEach(function (entry) {
+        if (!entry.modal || !entry.closeBtn || !entry.backdrop) return;
+
+        entry.openBtns.forEach(function (btn) {
+          if (!btn) return;
+          btn.addEventListener("click", function () {
+            openModal(entry, btn);
+          });
+        });
+
+        entry.closeBtn.addEventListener("click", function () {
+          closeModal(false);
+        });
+        entry.backdrop.addEventListener("click", function () {
+          closeModal(false);
+        });
+      });
 
       document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && modal.classList.contains("is-open")) {
-          closeModal();
+        if (event.key === "Escape" && activeEntry) {
+          closeModal(false);
         }
       });
     })();
